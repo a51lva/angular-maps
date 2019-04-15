@@ -8,6 +8,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -20,6 +21,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
       apiKey: 'AIzaSyB-L9pOYUZqlx7fQLmEkHSfcsE__AuqD-I'
     }),
     AgmJsMarkerClustererModule,
+    FormsModule,
     
   ],
   providers: [],

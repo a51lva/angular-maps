@@ -30,7 +30,6 @@ export class AppComponent {
     }
   ]
 
-
   styles = [
     {
         "featureType": "administrative",
@@ -112,7 +111,7 @@ export class AppComponent {
     }
 ]
 
-styles2 = [
+  styles2 = [
   {
       "featureType": "water",
       "elementType": "geometry",
