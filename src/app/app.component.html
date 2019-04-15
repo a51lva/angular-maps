@@ -1,18 +1,22 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="container" fxLayout="column">
-  <agm-map [latitude]="lat" [longitude]="lng">    
-    <agm-marker-cluster>
-        <agm-marker [latitude]="lat" [longitude]="lng" [label]="'9:00 AM'">
-          <agm-info-window [disableAutoPan]="true">
-            Hi, this is the content of the <strong>info window</strong>
-          </agm-info-window>
-        </agm-marker>
-        <div *ngFor="let item of coordinates; let i = index">
-          <agm-marker  [latitude]="item.lat" [longitude]="item.lon" [label]="'M i'"></agm-marker>
-        </div>
-        
-    </agm-marker-cluster>
-  </agm-map>
-</div>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-4">col-sm-4</div>
+      <div class="col-sm-8">
+          <agm-map [latitude]="lat" [longitude]="lng">    
+              <agm-marker-cluster>
+                  <agm-marker [latitude]="lat" [longitude]="lng" [label]="'9:00 AM'">
+                    <agm-info-window [disableAutoPan]="true">
+                      Hi, this is the content of the <strong>info window</strong>
+                    </agm-info-window>
+                  </agm-marker>
+                  <div *ngFor="let item of coordinates; let i = index">
+                    <agm-marker  [latitude]="item.lat" [longitude]="item.lon" [label]="'M i' "></agm-marker>
+                  </div>
+                  
+              </agm-marker-cluster>
+            </agm-map>
+      </div>      
+    </div>
+  <div>
 
 <router-outlet></router-outlet>
