@@ -4,10 +4,14 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
     selector: 'AutocompleteComponent',
     template: `
-    <div class="md-form">
-        <input type="text" [(ngModel)]='autocompleteInput' class="form-control" #addresstext mdbInput>
-        <label for="searchField">Search location</label>
-    </div>
+    <li class="nav-item">
+        <div class="input-group" style="min-width: 20rem">
+            <input type="text" [(ngModel)]='autocompleteInput' class="form-control" #addresstext mdbInput>
+            <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-search" aria-hidden="true"></i></span>
+            </div>
+        </div>        
+    </li>
     `,
 })
 export class AutocompleteComponent implements OnInit, AfterViewInit {
