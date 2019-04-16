@@ -47,19 +47,22 @@
           <li class="list-group-item">Porta ac consectetur ac</li>
           <li class="list-group-item">Vestibulum at eros</li>
         </ul>
+        <div class="md-form">
+          <input type="text" [(ngModel)]='location.address_level_1' class="form-control" id="searchField"
+            mdbInput>
+          <label for="searchField">Search location</label>
+  
+        </div>
+        <div class="row">
+          <div class="col-md-12 d-flex flex-center">
+            <button mdbBtn color="primary" mdbWavesLight (click)='updateOnMap()' type="submit">Search</button>
+          </div>
+        </div>
       </div>
       <div class="col-sm-10">
-          <agm-map [latitude]="lat" [longitude]="lng" [styles]="styles" [zoom]="15">    
-              <agm-marker-cluster>
-                  <agm-marker [latitude]="lat" [longitude]="lng" [label]="'9:00 AM'">
-                    <agm-info-window [disableAutoPan]="true">
-                      Hi, this is the content of the <strong>info window</strong>
-                    </agm-info-window>
-                  </agm-marker>
-                  <agm-marker  *ngFor="let item of coordinates; let i = index" [latitude]="item.lat" [longitude]="item.lon" [label]="'M i' "></agm-marker>
-                  
-              </agm-marker-cluster>
-            </agm-map>
+        <agm-map #map [mapTypeId]="'terrain'" [latitude]="location.lat" [longitude]="location.lng">
+          <agm-marker [latitude]="location.lat" [longitude]="location.lng"></agm-marker>
+        </agm-map>
       </div>      
     </div>
   <div>
