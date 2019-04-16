@@ -9,9 +9,11 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
+import { AutocompleteComponent } from './auto-complete.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AutocompleteComponent
   ],
   imports: [
     BrowserModule,
