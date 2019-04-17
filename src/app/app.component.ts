@@ -27,9 +27,11 @@ interface Location {
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  image = "/assets/images/haircut.png";
+  image2 = "/assets/images/haircut2.png";
   address: Object;
   establishmentAddress: Object;
-
+  infoWindowIsOpen: boolean = false;
   formattedAddress: string;
   formattedEstablishmentAddress: string;
 
@@ -62,12 +64,7 @@ export class AppComponent {
   }
 
   updateOnMap() {
-    let full_address: string = this.location.address_level_1 || ""
-    if (this.location.address_level_2) { full_address = full_address + " " + this.location.address_level_2; }
-    if (this.location.address_state) { full_address = full_address + " " + this.location.address_state; }
-    if (this.location.address_country) { full_address = full_address + " " + this.location.address_country; }
-
-    this.findLocation(full_address);
+    this.findLocation(this.establishmentAddress);
   }
 
   findLocation(address) {
@@ -104,6 +101,8 @@ export class AppComponent {
 
         this.map.triggerResize()
         .then(() =>  this.map._mapsWrapper.setCenter({lat: this.location.lat, lng: this.location.lng}));
+
+        this.location.zoom = 18;
 
       } else {
         alert("Sorry, this search produced no results.");

@@ -1,2 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    overflow: hidden;
+}
 .pac-container{z-index: 9999!important}
+.img-blur{
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+}
+
+#sidediv {
+    margin-top: 4.5rem;
+    height: calc(100vh - 4.6rem);
+    overflow-y: scroll;
+}
