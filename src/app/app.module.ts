@@ -10,6 +10,7 @@ import { AgmJsMarkerClustererModule } from '@agm/js-marker-clusterer';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import { AutocompleteComponent } from './auto-complete.component';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { AutocompleteComponent } from './auto-complete.component';
     }),
     AgmJsMarkerClustererModule,
     FormsModule,
+    NgScrollbarModule
     
   ],
   providers: [],

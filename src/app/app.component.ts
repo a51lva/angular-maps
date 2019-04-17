@@ -256,7 +256,6 @@ export class AppComponent implements OnInit{
   updateGeocodes(position){
     this.lat = position.coords.latitude;
     this.lng =  position.coords.longitude;
-    alert(position.coords.latitude+" "+position.coords.longitude +" / " + this.lat + " "+this.lng)
   }
   
   title: string = 'Angular Maps';

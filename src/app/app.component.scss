@@ -5,3 +5,10 @@ agm-map {
 .navbar .nav-item.avatar .dropdown-toggle img {
     height: 25px;
 }
+
+ng-scrollbar {
+    --scrollbar-size: 3px;
+    --scrollbar-thumb-color: #e91e6250;
+    --scrollbar-thumb-hover-color: #e91e63;
+    --scrollbar-border-radius: 4px;
+}
