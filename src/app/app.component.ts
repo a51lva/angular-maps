@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, NgZone, HostListener } from '@angular/core';
-import { MapsAPILoader, AgmMap } from '@agm/core';
+import { MouseEvent,MapsAPILoader, AgmMap } from '@agm/core';
 declare var google: any;
 
 interface Marker {
@@ -7,6 +7,7 @@ interface Marker {
   lng: number;
   label?: string;
   draggable: boolean;
+  visible:boolean;
 }
 
 interface Location {
@@ -46,7 +47,8 @@ export class AppComponent implements OnInit{
     marker: {
       lat: 38.7341836,
       lng: -9.1443516,
-      draggable: true
+      draggable: true,
+      visible:false
     },
     zoom: 15
   };
@@ -104,6 +106,7 @@ export class AppComponent implements OnInit{
           this.location.marker.lat = results[0].geometry.location.lat();
           this.location.marker.lng = results[0].geometry.location.lng();
           this.location.marker.draggable = true;
+          this.location.marker.visible = true;
           this.location.viewport = results[0].geometry.viewport;
         }
 
@@ -177,9 +180,10 @@ export class AppComponent implements OnInit{
     this.zone.run(() => {
       this.formattedEstablishmentAddress = place['formatted_address'];
       this.phone = place['formatted_phone_number'];
+      this.findLocation(this.establishmentAddress);
     });
 
-    this.findLocation(this.establishmentAddress);
+    
   }
 
   getAddrComponent(place, componentTemplate) {
@@ -250,12 +254,31 @@ export class AppComponent implements OnInit{
   }
 
   getMyLocation(){
-    navigator.geolocation.getCurrentPosition(position => this.updateGeocodes(position));
+    navigator.geolocation.watchPosition(position => this.updateGeocodes(position));
   }
 
   updateGeocodes(position){
     this.lat = position.coords.latitude;
     this.lng =  position.coords.longitude;
+  }
+
+  markerDragEnd(m: Marker, $event: MouseEvent) {
+    let lat = $event.coords.lat;
+    let lng = $event.coords.lng;
+    const geocoder = new google.maps.Geocoder();
+    const latlng = new google.maps.LatLng(lat, lng);
+    const request = {
+      latLng: latlng
+    };
+
+    geocoder.geocode(request, (results, status) => {
+      this.zone.run(() => {
+        this.formattedEstablishmentAddress = results[0].formatted_address
+        this.findLocation(results[0].formatted_address);
+      })
+    });
+
+
   }
   
   title: string = 'Angular Maps';
