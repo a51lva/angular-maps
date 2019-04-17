@@ -26,7 +26,7 @@ interface Location {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   image = "/assets/images/haircut.png";
   image2 = "/assets/images/haircut2.png";
   address: Object;
@@ -36,7 +36,10 @@ export class AppComponent {
   formattedEstablishmentAddress: string;
 
   phone: string;
-    geocoder: any;
+  geocoder: any;
+  lat: number = 38.7341836;
+  lng: number = -9.1443516;
+
   public location: Location = {
     lat: 38.7341836,
     lng: -9.1443516,
@@ -53,14 +56,19 @@ export class AppComponent {
     onWindowResize() {
     this.map.triggerResize()
         .then(() =>  this.map._mapsWrapper.setCenter({lat: this.location.lat, lng: this.location.lng}));
-    }
+  }
 
   constructor(public mapsApiLoader: MapsAPILoader, public zone: NgZone) {
+    this.getMyLocation = this.getMyLocation.bind(this);
     this.mapsApiLoader = mapsApiLoader;
 
     this.mapsApiLoader.load().then(() => {
       this.geocoder = new google.maps.Geocoder();
     });
+  }
+  
+  ngOnInit(): void {
+    this.getMyLocation();
   }
 
   updateOnMap() {
@@ -240,12 +248,18 @@ export class AppComponent {
       phone = this.getAddrComponent(place, COMPONENT_TEMPLATE);
     return phone;
   }
+
+  getMyLocation(){
+    navigator.geolocation.getCurrentPosition(position => this.updateGeocodes(position));
+  }
+
+  updateGeocodes(position){
+    this.lat = position.coords.latitude;
+    this.lng =  position.coords.longitude;
+    alert(position.coords.latitude+" "+position.coords.longitude +" / " + this.lat + " "+this.lng)
+  }
   
   title: string = 'Angular Maps';
-
-  lat: number = 38.7341836;
-  lng: number = -9.1443516;
-
   coordinates= [
     {
       "lat":"38.73189729",
