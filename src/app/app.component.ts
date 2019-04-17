@@ -257,6 +257,12 @@ export class AppComponent implements OnInit{
     navigator.geolocation.watchPosition(position => this.updateGeocodes(position));
   }
 
+
+  centerMapToMyLocation(){
+    this.map.triggerResize()
+        .then(() =>  this.map._mapsWrapper.setCenter({lat: this.lat, lng: this.lng}));
+  }
+
   updateGeocodes(position){
     this.lat = position.coords.latitude;
     this.lng =  position.coords.longitude;
