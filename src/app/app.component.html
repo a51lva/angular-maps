@@ -30,7 +30,7 @@
               <a class="nav-link" mdbTooltip="Go to My Current Location" placement="bottom" (click)="centerMapToMyLocation()"> <mdb-icon fas icon="map-marker-alt"></mdb-icon></a>
             </li>
         <li class="nav-item">
-          <a class="nav-link" mdbTooltip="Notifications" placement="bottom">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
+          <a class="nav-link link-position_relative" mdbTooltip="Notifications" placement="bottom" style="position: relative"> <mdb-icon fas icon="envelope"></mdb-icon><span class="badge badge-secondary">1</span></a>
         </li>
         <li class="nav-item avatar dropdown" dropdown>
           <a dropdownToggle mdbWavesEffect  type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
@@ -202,7 +202,40 @@
             </agm-info-window>
           </agm-marker>
           <agm-marker-cluster imagePath="/assets/images/m">
-            <agm-marker  *ngFor="let item of coordinates; let i = index" [latitude]="item.lat" [longitude]="item.lon" [label]="'M i'" [iconUrl]= "'/assets/images/house.png'"></agm-marker>          
+            <agm-marker  *ngFor="let item of coordinates; let i = index" [latitude]="item.lat" [longitude]="item.lon" [label]="" [iconUrl]= "'/assets/images/house.png'">
+              <agm-info-window>
+                <p class="mb-2 display-4">{{item.lat}} / {{item.lon}}</p>
+                <br/> 
+                <table class="table table-hover table-dark table-borderless">
+                  <tbody>
+                    <tr>
+                      <td class="align-middle" width="64">
+                        <span class="display-4">16:10</span>                        
+                      </td>
+                      <td class="align-middle">Otto</td>
+                      <td class="align-middle text-align_right"><a href="#" class="btn btn-default">Dark</a></td>
+                    </tr>
+                    <tr>
+                      <td class="align-middle">
+                          <span class="display-4">17:30</span>
+                      </td>
+                      <td class="align-middle">Thornton</td>
+                      <td class="align-middle text-align_right"><a href="#" class="btn btn-default">Dark</a></td>
+                    </tr>
+                    <tr>
+                      <td class="align-middle">
+                          <span class="display-4">18:00</span>
+                      </td>
+                      <td class="align-middle">the Bird</td>
+                      <td class="align-middle text-align_right">
+                        <a target="_blank" href="https://m.uber.com/ul/?client_id=3F7gvmpX8b4gXEVSvewOzhln-SoXL8NU&action=setPickup&pickup[latitude]=37.775818&pickup[longitude]=-122.418028&pickup[nickname]=UberHQ&pickup[formatted_address]=1455%20Market%20St%2C%20San%20Francisco%2C%20CA%2094103&dropoff[latitude]=37.802374&dropoff[longitude]=-122.405818&dropoff[nickname]=Coit%20Tower&dropoff[formatted_address]=1%20Telegraph%20Hill%20Blvd%2C%20San%20Francisco%2C%20CA%2094133&product_id=a1111c8c-c720-46c3-8534-2fcdd730040d&link_text=View%20team%20roster&partner_deeplink=partner%3A%2F%2Fteam%2F9383" class="btn btn-default">Dark</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+              </agm-info-window>
+            </agm-marker>          
           </agm-marker-cluster>
         </agm-map>
       </div>      

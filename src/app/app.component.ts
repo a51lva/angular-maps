@@ -310,10 +310,6 @@ export class AppComponent implements OnInit{
       "lon":"-9.13864636"
     },
     {
-      "lat":"38.71956896",
-      "lon":"-9.10173635"
-    },
-    {
       "lat":"38.76901401",
       "lon":"-9.10387957"
     },

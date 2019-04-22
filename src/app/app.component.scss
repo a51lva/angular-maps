@@ -12,3 +12,18 @@ ng-scrollbar {
     --scrollbar-thumb-hover-color: #e91e63;
     --scrollbar-border-radius: 4px;
 }
+
+.link-position_relative{
+    position: relative;
+}
+
+.link-position_relative .badge{
+    position: absolute;
+    top:0;
+    right: 2px;
+    border-radius: 100px
+}
+
+.text-align_right{
+    text-align: right;
+}
