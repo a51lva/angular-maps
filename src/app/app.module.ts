@@ -11,6 +11,9 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
 import { AutocompleteComponent } from './auto-complete.component';
 import { NgScrollbarModule } from 'ngx-scrollbar';
+
+import {config} from '../config.js';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,7 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     MDBBootstrapModule.forRoot(),
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB-L9pOYUZqlx7fQLmEkHSfcsE__AuqD-I'
+      apiKey:config.G_MAPS_KEY
     }),
     AgmJsMarkerClustererModule,
     FormsModule,
