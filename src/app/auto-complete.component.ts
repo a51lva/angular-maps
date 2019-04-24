@@ -1,7 +1,4 @@
 import { Component, ViewChild, EventEmitter, Output, OnInit, AfterViewInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-
-import {} from '@agm/core';
 declare var google: any;
 @Component({
     selector: 'AutocompleteComponent',

@@ -22,6 +22,7 @@ interface Location {
   address_state?: string;
   marker?: Marker;
 }
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -63,7 +64,6 @@ export class AppComponent implements OnInit{
   constructor(public mapsApiLoader: MapsAPILoader, public zone: NgZone) {
     this.getMyLocation = this.getMyLocation.bind(this);
     this.mapsApiLoader = mapsApiLoader;
-
     this.mapsApiLoader.load().then(() => {
       this.geocoder = new google.maps.Geocoder();
     });
@@ -256,7 +256,6 @@ export class AppComponent implements OnInit{
   getMyLocation(){
     navigator.geolocation.watchPosition(position => this.updateGeocodes(position));
   }
-
 
   centerMapToMyLocation(){
     this.map.triggerResize()
